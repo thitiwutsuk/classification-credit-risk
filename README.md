@@ -57,39 +57,39 @@ Two source files live in [`data/`](data/) (full column-level documentation in [`
 
 [`analysis.py`](analysis.py) follows a standard applied data science workflow. Progress is tracked below against each stage of that workflow, summarizing what was completed and why.
 
-### 1. Load & Aggregate — ✅ Complete
-- Loaded `customer_data.csv` (1,125 rows, one per customer) and `payment_data.csv` (8,250 rows, multiple per customer)
-- Aggregated payment history to one row per customer `id`:
+### 1. Load & Aggregate
+- [x] Loaded `customer_data.csv` (1,125 rows, one per customer) and `payment_data.csv` (8,250 rows, multiple per customer)
+- [x] Aggregated payment history to one row per customer `id`:
   - Overdue counts and normal-payment counts summed (total activity per customer)
   - Balances and limits summarized with mean **and** max (typical level vs. worst/highest exposure)
   - Product codes counted with `nunique` (number of distinct products held)
-- Merged the aggregated payment data into `customer_data` on `id`
+- [x] Merged the aggregated payment data into `customer_data` on `id`
 
-### 2. Clean the Data — ✅ Complete
-- Audited missing values post-merge and confirmed their source (customers with no payment record, or unreported balances)
-- Filled count-like fields (e.g. overdue counts) with `0` — no record means the event never occurred
-- Filled monetary fields (limits, balances) with the **median**, chosen for robustness against outlier balances
-- Verified zero remaining missing values before proceeding
+### 2. Clean the Data
+- [x] Audited missing values post-merge and confirmed their source (customers with no payment record, or unreported balances)
+- [x] Filled count-like fields (e.g. overdue counts) with `0` — no record means the event never occurred
+- [x] Filled monetary fields (limits, balances) with the **median**, chosen for robustness against outlier balances
+- [x] Verified zero remaining missing values before proceeding
 
-### 3. Exploratory Data Analysis (EDA) — ✅ Complete
-- Compared every feature's mean between the Risky (`label=1`) and Worthy (`label=0`) groups
-- Normalized gaps as a **percentage difference** so features on very different scales are comparable
-- Cross-tabulated categorical features against the label to check for demographic effects
-- Computed correlation of each numeric feature with the target
-- Exported 3 charts: class balance, top-feature boxplots by group, correlation bar chart
+### 3. Exploratory Data Analysis (EDA)
+- [x] Compared every feature's mean between the Risky (`label=1`) and Worthy (`label=0`) groups
+- [x] Normalized gaps as a **percentage difference** so features on very different scales are comparable
+- [x] Cross-tabulated categorical features against the label to check for demographic effects
+- [x] Computed correlation of each numeric feature with the target
+- [x] Exported 3 charts: class balance, top-feature boxplots by group, correlation bar chart
 
-### 4. Feature Engineering — ✅ Complete
-- Derived `overdue_ratio = overdue count / (overdue count + normal payment count)`
-- Rationale: raw overdue counts are misleading in isolation (5 of 100 vs. 5 of 6 payments overdue are very different customers) — the ratio captures behavior, not just raw tally
+### 4. Feature Engineering
+- [x] Derived `overdue_ratio = overdue count / (overdue count + normal payment count)`
+- [x] Rationale: raw overdue counts are misleading in isolation (5 of 100 vs. 5 of 6 payments overdue are very different customers) — the ratio captures behavior, not just raw tally
 
-### 5. Preprocessing — ✅ Complete
-- One-hot encoded categorical codes (`fea_1, fea_3, fea_5, fea_6, fea_7, fea_9`), which carry no ordinal meaning
-- Split the data 75/25 into train/test with **stratification** to preserve the 80/20 class ratio
-- Standardized features (`StandardScaler`) ahead of Logistic Regression for comparable coefficients
-- Applied `class_weight="balanced"` to both models to counteract class imbalance
+### 5. Preprocessing
+- [x] One-hot encoded categorical codes (`fea_1, fea_3, fea_5, fea_6, fea_7, fea_9`), which carry no ordinal meaning
+- [x] Split the data 75/25 into train/test with **stratification** to preserve the 80/20 class ratio
+- [x] Standardized features (`StandardScaler`) ahead of Logistic Regression for comparable coefficients
+- [x] Applied `class_weight="balanced"` to both models to counteract class imbalance
 
-### 6. Modeling — ✅ Complete
-- Trained two models so their conclusions can be cross-checked against each other:
+### 6. Modeling
+- [x] Trained two models so their conclusions can be cross-checked against each other:
 
   | | Logistic Regression | Random Forest |
   |---|---|---|
@@ -98,15 +98,15 @@ Two source files live in [`data/`](data/) (full column-level documentation in [`
   | Gives direction (risk ↑/↓)? | Yes | No (importance only) |
   | Needs feature scaling? | Yes | No |
 
-### 7. Evaluation — ✅ Complete
-- Selected **ROC-AUC** as the primary metric, since accuracy alone is misleading on imbalanced classes (always predicting "Worthy" already scores 80%)
-- Generated a confusion matrix and per-class precision/recall/F1 for both models
-- Prioritized recall on the Risky class, since missing a genuinely risky customer (false negative) is typically costlier than over-flagging a good one (false positive)
+### 7. Evaluation
+- [x] Selected **ROC-AUC** as the primary metric, since accuracy alone is misleading on imbalanced classes (always predicting "Worthy" already scores 80%)
+- [x] Generated a confusion matrix and per-class precision/recall/F1 for both models
+- [x] Prioritized recall on the Risky class, since missing a genuinely risky customer (false negative) is typically costlier than over-flagging a good one (false positive)
 
-### 8. Interpretation — ✅ Complete
-- Triangulated feature rankings from three independent signals: logistic regression coefficients, random forest importances, and raw EDA percentage gaps
-- Reported a factor as a genuine driver of risk only where all three signals agreed
-- Translated the ranked factors into the plain-language Q1/Q2 answers below
+### 8. Interpretation
+- [x] Triangulated feature rankings from three independent signals: logistic regression coefficients, random forest importances, and raw EDA percentage gaps
+- [x] Reported a factor as a genuine driver of risk only where all three signals agreed
+- [x] Translated the ranked factors into the plain-language Q1/Q2 answers below
 
 > For a deeper, more technical walkthrough of every technique (with the underlying math for the sigmoid function, bagging, gradient descent, etc.), see [`METHODOLOGY.md`](METHODOLOGY.md).
 
