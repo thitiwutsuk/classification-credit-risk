@@ -1,11 +1,12 @@
 # Credit Risk Analysis
 
-![Python](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white)
-![pandas](https://img.shields.io/badge/pandas-data%20wrangling-150458?logo=pandas&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-numerical%20computing-013243?logo=numpy&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-modeling-F7931E?logo=scikitlearn&logoColor=white)
-![Matplotlib](https://img.shields.io/badge/Matplotlib-visualization-11557C?logo=matplotlib&logoColor=white)
-![Seaborn](https://img.shields.io/badge/Seaborn-visualization-3776AB)
+![Python](https://img.shields.io/badge/Python-3.13-3776AB?style=for-the-badge&logo=python&logoColor=white&labelColor=1e2130)
+![pandas](https://img.shields.io/badge/pandas-2.3-150458?style=for-the-badge&logo=pandas&logoColor=white&labelColor=1e2130)
+![NumPy](https://img.shields.io/badge/NumPy-2.3-013243?style=for-the-badge&logo=numpy&logoColor=white&labelColor=1e2130)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-1.7-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white&labelColor=1e2130)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-3.10-11557C?style=for-the-badge&logo=matplotlib&logoColor=white&labelColor=1e2130)
+![Seaborn](https://img.shields.io/badge/Seaborn-0.13-3776AB?style=for-the-badge&labelColor=1e2130)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white&labelColor=1e2130)
 
 A data science project analyzing bank customer data to identify what separates **Credit Risky** customers from **Credit Worthy** ones, using exploratory data analysis and supervised classification.
 
